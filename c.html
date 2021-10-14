@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+		<form>
+			<label for="name">Name</label>
+			<input type="text" name="name" id="name"><br>
+
+			<label for="email">Email</label>
+			<input type="text" name="email" id="email" required><br>
+
+			<label for="money" >Put amount of cash:</label>	
+			<input type="number" name="money" id="money" required><br>
+		</form>
+		<button id="button" onclick="checkValidationAndPerformAction()">Click</button>		
+
+		<script type="text/javascript">
+				checkValidationOfEmail = ()=>{
+						let emailElement = document.querySelector('#email');
+						let req = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+						console.log(req.test(emailElement.value))
+						return req.test(emailElement.value)
+				};
+				checkValidationOfMoney = ()=>{
+					let moneyElement = document.querySelector('#money');
+					return moneyElement.value.trim().length > 0;
+				}	
+				checkValidationAndPerformAction = ()=>{
+					let res = checkValidationOfEmail();
+					let res2 = checkValidationOfMoney();
+					let emailElement = document.querySelector('#email');
+					if (!res || !res2) {
+						emailElement.style.border = "3px red solid";
+						alert("Fill correctly gaps");			
+					}else{
+						emailElement.style.border = "1px black solid";
+					}
+				}	
+		</script>
+</body>
+</html>
